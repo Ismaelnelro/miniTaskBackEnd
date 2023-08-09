@@ -1,0 +1,54 @@
+{
+  "name": "mine_task_back",
+  "version": "1.0.0",
+  "description": "Todo list, is an app to organize and management pending task or activities. An util tool to help you to management your time, establish priorities and keep you on your daily responsibilities",
+  "repository": {
+    "type": "git",
+    "url": "pending.."
+  },
+  "keywords": [
+    "tasks",
+    "app",
+    "todo",
+    "management",
+    "organize"
+  ],
+  "engines": {
+    "node": ">=v18.16.0"
+  },
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon ./src/app.ts",
+    "start": "node dist/app.js",
+    "build": "tsc"
+  },
+  "author": "Ismael Rosas",
+  "license": "ISC",
+  "dependencies": {
+    "@colors/colors": "^1.6.0",
+    "@types/express": "^4.17.17",
+    "@types/node": "^20.4.9",
+    "bcryptjs": "^2.4.3",
+    "colors": "^1.4.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-validator": "^7.0.1",
+    "jsonwebtoken": "^9.0.1",
+    "mongoose": "^7.4.2",
+    "morgan": "^1.10.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.6"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.13",
+    "@types/morgan": "^1.9.4",
+    "@types/bcryptjs": "^2.4.2",
+    "@types/dotenv": "^8.2.0",
+    "@types/express": "^4.17.17",
+    "@types/jsonwebtoken": "^9.0.2",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.6",
+    "nodemon": "^3.0.1"
+  }
+}
