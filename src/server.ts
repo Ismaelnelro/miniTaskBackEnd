@@ -36,7 +36,7 @@ export class Server {
   }
 
   routes(): void {
-    this.app.use('/api/v1', mainRouter)
+    this.app.use('', mainRouter)
   }
 
 
