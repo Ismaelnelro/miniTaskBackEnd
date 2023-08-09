@@ -1,10 +1,11 @@
 import { Request, Response, Router } from "express";
+import path from "path";
 
 const router = Router()
 
-// http://localhost:5000/api/v1/example
-router.get('/example',(req: Request , res: Response)=>{
-  res.send("HOLA MUNDO")
+router.get('/',(req: Request , res: Response)=>{
+  const filepath = path.resolve(__dirname, '..', '..', 'public', 'index.html');
+  res.sendFile(filepath);
 
 })
 

@@ -1,8 +1,10 @@
 import express, { Application } from "express";
 import morgan from 'morgan';
 import cors from 'cors';
+import path from 'path';
 import colors from '@colors/colors';
-import router from './routes/index'
+import mainRouter from './routes/index'
+
 const app = express()
 
 
@@ -30,10 +32,11 @@ export class Server {
     this.app.use(cors(this.corsOptions));
     this.app.use(express.json());
     this.app.use(express.urlencoded({extended:true}));
+    this.app.use(express.static(path.join(__dirname, 'public')));
   }
-  
+
   routes(): void {
-    this.app.use('/api/v1', router)
+    this.app.use('/api/v1', mainRouter)
   }
 
 
