@@ -1,16 +1,21 @@
 import { Request, Response, Router } from "express";
 import path from "path";
+import authRouter from "./authRouter";
 
 const router = Router()
-const ruta= '/api/v1'
+const basePath = '/api/v1'
+
+//INFORMATIVE ROUTE
 router.get('/', (req: Request, res: Response) => {
   const filepath = path.resolve(__dirname, '..', '..', 'public', 'index.html');
   res.sendFile(filepath);
-
 })
 
-router.get(`${ruta}/example`, (req:Request, res:Response) => {
-  res.send("HOLA MUNDO")
-})
+//AUTH
+router.use(`${basePath}/auth`, authRouter);
+
+
+//EXTRAS
+
 
 export default router;
