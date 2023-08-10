@@ -1,16 +1,6 @@
 # MINI TASK BACKEND  
 Breve descripción o resumen del proyecto.
 
-!Nota:
-expres validator 
-uuid
-jwt
-color
-mongoose
-
-mongodb+srv://ismaelnelsonrosas:z6vHoTsqWFLNkGb2@cluster0.exlhd3f.mongodb.net/
-
-
 ## Tabla de contenidos
 
 - [MINI TASK BACKEND](#mini-task-backend)
