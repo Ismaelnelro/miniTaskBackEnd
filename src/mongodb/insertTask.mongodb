@@ -1,0 +1,8 @@
+const database = 'mini_tasks';
+
+use(database);
+
+db.task.insertOne({
+  _id: 2,
+  name: "Estudiar mysql vs"
+})

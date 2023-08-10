@@ -1,0 +1,3 @@
+const database = 'mini_task'
+use(database);
+db.createCollection('task');

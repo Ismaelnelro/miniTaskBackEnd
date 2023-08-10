@@ -1,9 +1,17 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
+const path_1 = __importDefault(require("path"));
 const router = (0, express_1.Router)();
-// http://localhost:5000/api/v1/example
-router.get('/example', (req, res) => {
+const ruta = '/api/v1';
+router.get('/', (req, res) => {
+    const filepath = path_1.default.resolve(__dirname, '..', '..', 'public', 'index.html');
+    res.sendFile(filepath);
+});
+router.get(`${ruta}/example`, (req, res) => {
     res.send("HOLA MUNDO");
 });
 exports.default = router;
