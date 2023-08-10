@@ -5,7 +5,8 @@ dotenv.config();
 const config = {
   port: process.env.PORT || 5001,
   database: process.env.DB_URI,
-  uriProxy: process.env.URI_PROXY,
+  uriProxy_PRO: process.env.URI_PROXY_PROD,
+  uriProxy_DEV: process.env.URI_PROXY_DEV,
   corsOptions: {
     origin: "*",
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
