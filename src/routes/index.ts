@@ -1,6 +1,7 @@
 import { Request, Response, Router } from "express";
 import path from "path";
 import authRouter from "./authRouter";
+import taskRouter from "./taskRouter";
 
 const router = Router()
 const basePath = '/api/v1'
@@ -16,6 +17,7 @@ router.use(`${basePath}/auth`, authRouter);
 
 
 //EXTRAS
+router.use(`${basePath}/task`, taskRouter);
 
 
 export default router;
