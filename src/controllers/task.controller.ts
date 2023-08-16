@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { fetchCreateTaskService, fetchReadAllTasks } from "../service/task.services";
+import { fetchCreateTaskService, fetchReadAllTasks, fetchUpdateTaskByIdService } from "../service/task.services";
 import { ITask } from "../interface/ITask";
 import { catchedAsync } from "../utils/catchedAsync";
 import { response } from "../utils/response";
@@ -27,28 +27,19 @@ const readAllTasksCatchedAsync = catchedAsync(readAllTasks);
 
 /*READ ONE*/
 async function readTask(req: Request, res: Response) {
-  try {
 
-    // const res = await fetchCreateTaskService();
-  } catch (error: any) {
-    console.log("There was an Error" + error)
-    throw new Error("System Error!")
-  }
 };
 const readTaskCatchedAsync = catchedAsync(readTask);
 
 
 /*UPDATE*/
 async function updateTask(req: Request, res: Response) {
-  try {
-    
-    // const res = await fetchCreateTaskService();
-  } catch (error: any) {
-    console.log("There was an Error" + error)
-    throw new Error("System Error!")
-  }
+  const { id } = req.params;
+  const update: ITask = req.body;
+  const result = await fetchUpdateTaskByIdService({ id, newUpdateTask: update });
+  response(res, 200, result);
 };
-const updateTaskCatchedAsync = catchedAsync(createTask);
+const updateTaskCatchedAsync = catchedAsync(updateTask);
 
 
 

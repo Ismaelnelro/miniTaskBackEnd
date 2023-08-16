@@ -16,7 +16,7 @@ const taskSchema = new Schema<ITask>({
   },
   updateAT: {
     type: Date,
-    default: undefined
+    default: new Date()
   },
   reminder: {
     type: Date,

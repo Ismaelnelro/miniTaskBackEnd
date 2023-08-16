@@ -10,7 +10,7 @@ import { TaskError } from "../utils/errors";
 /*FETCH CREATE*/
 async function fetchCreateTaskService(task: ITask): Promise<CreateTaskResponse | undefined> {
   const newTaskCreated = await Task.create(task);
-  if (newTaskCreated) throw new TaskError({ message: "Error while creating task", status: 422 });
+  if (!newTaskCreated) throw new TaskError({ message: "Error while creating task", status: 422 });
   return { msg: "Task created sucessfully!", task: newTaskCreated }
 };
 
@@ -37,15 +37,23 @@ async function fetchReadTask(task: ITask): Promise<CreateTaskResponse> {
 }
 
 
-/*FETCH UPDATE*/
-async function fetchUpdateTaskService() {
-  try {
-    const data = await Task.create();
+interface UpdateTask {
+  id: string;
+  newUpdateTask: ITask
+}
 
-  } catch (error: any) {
-    console.log("There was an Error" + error)
-    throw new Error("System Error!")
+/*FETCH UPDATE*/
+
+async function fetchUpdateTaskByIdService({ id, newUpdateTask }: UpdateTask): Promise<any> {
+
+  const updateTask: ITask = {
+    ...newUpdateTask,
+    updateAT: new Date()
   }
+
+  const updatedTask = await Task.findByIdAndUpdate(id, updateTask)
+  if (!updateTask) throw new TaskError({ message: "imposible update", status: 404 })
+  return { msg: `We update task with id: - ${id} `, updateTask }
 };
 
 
@@ -61,5 +69,5 @@ async function fetchDeleteTaskService() {
 };
 
 export {
-  fetchCreateTaskService, fetchUpdateTaskService, fetchReadAllTasks, fetchReadTask, fetchDeleteTaskService
+  fetchCreateTaskService, fetchUpdateTaskByIdService, fetchReadAllTasks, fetchReadTask, fetchDeleteTaskService
 }
