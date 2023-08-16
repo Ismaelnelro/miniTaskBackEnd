@@ -10,9 +10,9 @@ taskRouter.get('/', readAllTasksCatchedAsync);
 /*READ*/
 taskRouter.get('/:id/task', readTaskCatchedAsync);
 /*UPDATE*/
-taskRouter.put('/:id/task', updateTaskCatchedAsync);
+taskRouter.put('/:id', updateTaskCatchedAsync);
 /*DELETE*/
-taskRouter.delete('/:id/task', deleteTaskCatchedAsync);
+taskRouter.delete('/:id', deleteTaskCatchedAsync);
 
 
 

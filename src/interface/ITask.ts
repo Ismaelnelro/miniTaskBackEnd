@@ -36,4 +36,8 @@ export interface ReadTasksResponse {
 }
 
 
+export interface UpdateTask {
+  id: string;
+  newUpdateTask: ITask
+}
 
