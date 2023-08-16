@@ -1,17 +1,27 @@
-import { Router } from "express";
-import { createTask, deleteTask, readAllTasks, readTasks, updateTask } from "../controllers/task.controller";
+import { NextFunction, Request, Response, Router } from "express";
+import { createTaskCatchedAsync, readTaskCatchedAsync, readAllTasksCatchedAsync, updateTaskCatchedAsync, deleteTaskCatchedAsync } from "../controllers/task.controller";
 
 const taskRouter = Router()
 
 /*CREATE*/
-taskRouter.post('/create', createTask);
+taskRouter.post('/new', createTaskCatchedAsync);
 /*READ-ALL*/
-taskRouter.get('/tasks', readTasks);
+taskRouter.get('/', readAllTasksCatchedAsync);
 /*READ*/
-taskRouter.get('/:id/task', readAllTasks);
+taskRouter.get('/:id/task', readTaskCatchedAsync);
 /*UPDATE*/
-taskRouter.put('/:id/task', updateTask);
+taskRouter.put('/:id/task', updateTaskCatchedAsync);
 /*DELETE*/
-taskRouter.delete('/:id/task', deleteTask);
+taskRouter.delete('/:id/task', deleteTaskCatchedAsync);
+
+
+
+taskRouter.use((err: any, req: Request, res: Response, next: NextFunction) => {
+  res.status(err.statusCode).json({
+    error: true,
+    message: err.message,
+    status: err.statusCode,
+  })
+})
 
 export default taskRouter;
