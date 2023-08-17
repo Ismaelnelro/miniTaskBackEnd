@@ -1,4 +1,4 @@
-import { CreateTaskResponse, ITask, ReadTasksResponse, UpdateTask } from "../interface/ITask";
+import { CreateTaskResponse, ITask, ReadTasksResponse, UpdateTask} from "../interface/ITask";
 import Task from "../models/task.models"
 import { TaskError } from "../utils/errors";
 
@@ -37,6 +37,7 @@ async function fetchUpdateTaskByIdService({ id, newUpdateTask }: UpdateTask): Pr
   const updatedTask = await Task.findByIdAndUpdate(id, updateTask)
   if (!updateTask) throw new TaskError({ message: "imposible update", status: 404 })
   if (updatedTask) return { msg: `We update task with id: - ${id} `, task: updateTask }
+
 };
 
 
