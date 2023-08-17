@@ -1,4 +1,4 @@
-import express, { Application } from "express";
+import express, { Application, NextFunction, Request, Response } from "express";
 import morgan from 'morgan';
 import cors from 'cors';
 import path from 'path';
@@ -30,7 +30,6 @@ export class Server {
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(express.static(path.join(__dirname, 'public')));
   }
-
   routes(): void {
     this.app.use('', mainRouter)
   }
@@ -39,7 +38,7 @@ export class Server {
   listen(): void {
     connection();
     this.app.listen(this.port, () => {
-      console.log(colors.bgBlue.white(` ** Server Running on port ${this.port} **`));
+      console.log(colors.bgBlue.white(` ** Server Running on http://localhost:${this.port}/api/v1 **`));
 
     })
   }
